@@ -1,12 +1,13 @@
 import express from 'express';
 import { Request, Response } from 'express';
+import saveAlunos from '../controllers/alunosController';
 
 const router = express.Router();
 
 // GET all alunos
 router.get('/alunos', (req: Request, res: Response) => {
-    // code to retrieve all alunos from database
-    res.send('Retrieving all alunos');
+    
+    res.send({"message": "Hello World!"});
 });
 
 // GET aluno by ID
@@ -19,8 +20,13 @@ router.get('/alunos/:id', (req: Request, res: Response) => {
 // POST new aluno
 router.post('/alunos', (req: Request, res: Response) => {
     const aluno = req.body;
+
     // code to add new aluno to database
     res.send(`Adding new aluno: ${JSON.stringify(aluno)}`);
+    saveAlunos(aluno);
+
+    
+    
 });
 
 // PUT update aluno by ID

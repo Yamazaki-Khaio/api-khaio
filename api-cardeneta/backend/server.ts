@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { Sequelize } from 'sequelize';
 import alunosRouter from './routes/alunos';
+import e from 'express';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,15 +13,14 @@ const sequelize = new Sequelize('postgres', 'postgres', 'postgres', {
   logging: false,
 });
 
-// Teste a conexão com o banco de dados
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Conexão com o banco de dados estabelecida com sucesso.');
-  })
-  .catch((err) => {
-    console.error('Erro ao conectar ao banco de dados:', err);
-  });
+
+
+try {
+  await sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
 
 // Defina as rotas e middlewares do Express
 app.use(express.json());
@@ -37,3 +37,5 @@ app.get('/', (req: Request, res: Response) => {
 });
 // Defina a rota para a API de alunos
 app.use('/api', alunosRouter);
+
+// Exporte a instância do Sequelize configurada

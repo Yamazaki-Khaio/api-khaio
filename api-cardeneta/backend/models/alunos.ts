@@ -1,37 +1,43 @@
 import { Model, DataTypes } from 'sequelize';
+import  sequelize  from '../server'; // Importe a instância do Sequelize configurada
 
+export default class Aluno extends Model {
+  public id!: number;
+  public nome!: string;
+  public email!: string;
+  public matricula!: string;
+  public idade!: number;
 
-class Aluno extends Model {
-    public id!: number;
-    public nome!: string;
-    public email!: string;
-    public idade!: number;
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+  // Adicione outros campos do modelo que correspondem aos campos da tabela
 }
 
-Aluno.init({
+Aluno.init(
+  {
     id: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        autoIncrement: true,
-        primaryKey: true,
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
     },
     nome: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-    },
-    email: {
-        type: DataTypes.STRING(100),
-        allowNull: false,
-        unique: true,
+      type: DataTypes.STRING,
     },
     idade: {
-        type: DataTypes.INTEGER.UNSIGNED,
-        allowNull: false,
+      type: DataTypes.INTEGER,
     },
-}, {
-    tableName: 'alunos',
-    sequelize,
-});
+    email: {
+      type: DataTypes.STRING,
+    },
+    matricula: {
+      type: DataTypes.STRING,
+    },
 
-export default Aluno;
+    // Defina outros campos do modelo aqui
+  },
+  {
+    sequelize, // Passando a conexão instanciada do Sequelize
+    schema: 'cardeneta', // Nome do schema no PostgreSQL
+    tableName: 'alunos', // Nome da tabela no PostgreSQL
+    timestamps: false, // Não crie colunas `createdAt` e `updatedAt`
+  }
+);
+
