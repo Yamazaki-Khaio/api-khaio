@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize';
-import  sequelize  from '../server'; // Importe a instância do Sequelize configurada
+import  { sequelize } from '../server'; // Importe a instância do Sequelize configurada
 
 export default class Aluno extends Model {
   public id!: number;

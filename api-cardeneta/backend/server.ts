@@ -1,19 +1,16 @@
 import express, { Request, Response } from 'express';
 import { Sequelize } from 'sequelize';
 import alunosRouter from './routes/alunos';
-import e from 'express';
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Configure o Sequelize para se conectar ao banco de dados PostgreSQL
-const sequelize = new Sequelize('postgres', 'postgres', 'postgres', {
+export const sequelize = new Sequelize('postgres', 'postgres', 'postgres', {
   host: 'localhost',
   dialect: 'postgres',
   logging: false,
 });
-
-
 
 try {
   await sequelize.authenticate();
@@ -38,4 +35,3 @@ app.get('/', (req: Request, res: Response) => {
 // Defina a rota para a API de alunos
 app.use('/api', alunosRouter);
 
-// Exporte a instância do Sequelize configurada
