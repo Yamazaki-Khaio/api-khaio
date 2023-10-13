@@ -1,42 +1,37 @@
-export default class Aluno {
-    id: number;
-    nome: string;
-    idade: number;
-    matricula: string;
-
-    constructor(nome: string, idade: number, matricula: string, id: number) {
-        this.id = id;
-        this.nome = nome;
-        this.idade = idade;
-        this.matricula = matricula;
-    }
-
-    getNome(): string {
-        return this.nome;
-    }
-    getId(): number {
-        return this.id;
-    }
+import { Model, DataTypes } from 'sequelize';
 
 
-    getIdade(): number {
-        return this.idade;
-    }
-
-    getMatricula(): string {
-        return this.matricula;
-    }
-
-    setNome(nome: string): void {
-        this.nome = nome;
-    }
-
-    setIdade(idade: number): void {
-        this.idade = idade;
-    }
-
-    setMatricula(matricula: string): void {
-        this.matricula = matricula;
-    }
+class Aluno extends Model {
+    public id!: number;
+    public nome!: string;
+    public email!: string;
+    public idade!: number;
+    public readonly createdAt!: Date;
+    public readonly updatedAt!: Date;
 }
 
+Aluno.init({
+    id: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    nome: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+    },
+    email: {
+        type: DataTypes.STRING(100),
+        allowNull: false,
+        unique: true,
+    },
+    idade: {
+        type: DataTypes.INTEGER.UNSIGNED,
+        allowNull: false,
+    },
+}, {
+    tableName: 'alunos',
+    sequelize,
+});
+
+export default Aluno;

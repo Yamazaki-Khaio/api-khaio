@@ -1,12 +1,9 @@
 import express, { Request, Response } from 'express';
 import { Sequelize } from 'sequelize';
-import Aluno from './models/alunos';
+import alunosRouter from './routes/alunos';
 
 const app = express();
 const port = process.env.PORT || 3000;
-const aluno = new Aluno('João', 20, '2020001', 1);
-console.assert(aluno.getNome() === 'João', 'Nome do aluno não está correto.');
-console.log('Nome do aluno:', aluno.getNome());
 
 // Configure o Sequelize para se conectar ao banco de dados PostgreSQL
 const sequelize = new Sequelize('postgres', 'postgres', 'postgres', {
@@ -27,11 +24,16 @@ sequelize
 
 // Defina as rotas e middlewares do Express
 app.use(express.json());
-
-app.get('/', (req: Request, res: Response) => {
-  res.send('Olá, mundo!');
-});
+app.use(express.urlencoded({ extended: true }));
 // Inicie o servidor Express
 app.listen(port, () => {
   console.log(`Servidor Express está ouvindo na porta ${port}`);
+
 });
+
+// Defina a rota raiz
+app.get('/', (req: Request, res: Response) => {
+  res.send('Hello World!');
+});
+// Defina a rota para a API de alunos
+app.use('/api', alunosRouter);
