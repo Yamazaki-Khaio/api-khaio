@@ -1,0 +1,34 @@
+<!-- Componente principal da aplicação -->
+<head>
+  <meta charset="UTF-8">
+  <!-- Adicione o link para o arquivo CSS do Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+
+<body>
+  <!-- Use as classes do Bootstrap para estilizar seus elementos -->
+  <header class="bg-light">
+    <div class="container">
+      <button class="btn btn-primary">Cadastro</button>
+      <button class="btn btn-secondary">Login</button>
+    </div>
+  </header>
+
+  <!-- Use a diretiva do Angular para exibir a lista de items -->
+  <main class="container my-4">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of items ">{{ items }}</li>
+    </ul>
+  </main>
+
+  <footer class="bg-light">
+    <div class="container">
+      <p>Rodapé</p>
+    </div>
+  </footer>
+
+  <!-- Use a diretiva do Angular para exibir o componente do router -->
+  <router-outlet></router-outlet>
+
+</body>
