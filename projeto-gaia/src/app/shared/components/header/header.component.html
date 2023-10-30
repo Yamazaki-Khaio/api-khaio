@@ -1,48 +1,48 @@
-<!-- Adicione essas linhas no cabeçalho do seu arquivo HTML -->
+<!-- FILEPATH: /c:/Users/kaio.fonseca/Documents/api-khaio/projeto-gaia/src/app/shared/components/header/header.component.html -->
+
+<!-- Include Bootstrap CSS and JS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-<!-- Adicione a diretiva ngIf para exibir o nome do projeto -->
-<div *ngIf="!isLoggedIn" class="text-center">
-  <h1>Projeto Gaia</h1>
-</div>
+<!-- Header -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">Projeto Gaia</a>
 
-<!-- Adicione a diretiva ngIf para exibir o navbar caso o usuário esteja logado -->
-<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Projeto Gaia</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Orders</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Customers</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav" *ngIf="isLogged">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Customers</a>
+          </li>
+        </ul>
 
-      <div class="text-end">
-        <button type="button" class="btn btn-light text-dark me-2">Login</button>
-        <button type="button" class="btn btn-primary">Sign-up</button>
+        <form class="d-flex align-items-center p-md-5">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success ms-2" type="submit">Search</button>
+        </form>
+        <div class="text-end">
+          <p *ngIf="!isLogged">Please login to access the navbar</p>
+          <button type="button" class="btn btn-light text-dark me-2" *ngIf="!isLogged">Login</button>
+          <button type="button" class="btn btn-primary" *ngIf="!isLogged">Sign-up</button>
+        </div>
       </div>
-
+    </div>
+  </nav>
+</header>
