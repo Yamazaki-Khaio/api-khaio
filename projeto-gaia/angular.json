@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "project-api": {
+    "projeto-gaia": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/project-api",
+            "outputPath": "dist/projeto-gaia",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "project-api:build:production"
+              "browserTarget": "projeto-gaia:build:production"
             },
             "development": {
-              "browserTarget": "project-api:build:development"
+              "browserTarget": "projeto-gaia:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "project-api:build"
+            "browserTarget": "projeto-gaia:build"
           }
         },
         "test": {
@@ -93,6 +93,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.sass"
             ],
             "scripts": []
@@ -102,6 +103,6 @@
     }
   },
   "cli": {
-    "analytics": "79ae521b-88f7-4ddc-86f3-7232cf8b896a"
+    "analytics": "e0778334-3031-45aa-be9d-f33aab6eabdb"
   }
 }
