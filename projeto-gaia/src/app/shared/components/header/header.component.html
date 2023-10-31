@@ -2,7 +2,6 @@
 
 <!-- Include Bootstrap CSS and JS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 <!-- Header -->
 <header>
@@ -17,19 +16,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav" *ngIf="isLogged">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="#">Home</a>
+            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="#">Dashboard</a>
+            <a class="nav-link" routerLink="padrao">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="#">Orders</a>
+            <a class="nav-link" routerLink="orders">Orders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="#">Products</a>
+            <a class="nav-link" routerLink="products">Products</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="#">Customers</a>
+            <a class="nav-link" routerLink="customers">Customers</a>
           </li>
         </ul>
 
@@ -37,10 +36,12 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success ms-2" type="submit">Search</button>
         </form>
-        <div class="text-end">
-          <p *ngIf="!isLogged">Please login to access the navbar</p>
-          <button type="button" class="btn btn-light text-dark me-2" *ngIf="!isLogged">Login</button>
-          <button type="button" class="btn btn-primary" *ngIf="!isLogged">Sign-up</button>
+
+
+        <div class="text-end ">
+          <p *ngIf="!isLogged">Please login to access</p>
+          <button type="button" class="btn btn-light text-dark me-2" routerLink="login" *ngIf="!isLogged">Login</button>
+          <button type="button" class="btn btn-primary" routerLink="cadastro" *ngIf="!isLogged">Sign-up</button>
         </div>
       </div>
     </div>
