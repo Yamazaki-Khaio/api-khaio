@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class UserLoginComponent {
 
+    constructor() { }
+    ngOnInit(): void {
+
+
+    }
+
+
 }
