@@ -1,0 +1,15 @@
+{
+  "name": "api-khaio",
+  "version": "1.0.0",
+  "description": "api-gaia",
+  "main": "backend/src/index.ts",
+  "scripts": {
+    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npx ng serve\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.1"
+  }
+}
