@@ -23,5 +23,3 @@ sequelize.sync({ force: true }).then(() => {
 // Exports express app
 
 export default app;
-
-```
