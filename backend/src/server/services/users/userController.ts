@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import User from './userModels';
 
+
 export const UserController = {
   async index(req: Request, res: Response) {
     try {
@@ -28,6 +29,7 @@ export const UserController = {
   async store(req: Request, res: Response) {
     try {
       const user = await User.create(req.body);
+      console.log(user);
       return res.json(user);
     } catch (err) {
       console.error(err);
@@ -63,3 +65,8 @@ export const UserController = {
     }
   },
 };
+
+
+
+
+export default UserController;

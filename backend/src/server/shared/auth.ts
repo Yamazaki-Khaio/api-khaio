@@ -1,12 +1,8 @@
 import jwt from 'jsonwebtoken';
+import User from '../services/users/userModels';
 
 const secretKey = 'secret';
 
-interface User {
-    id: number;
-    name: string;
-    email: string;
-}
 
 function generateToken(user: User): string {
     const token = jwt.sign(user, secretKey);
@@ -21,5 +17,7 @@ function verifyToken(token: string): User {
         throw new Error('Token inválido');
     }
 }
+
+
 
 export { generateToken, verifyToken };

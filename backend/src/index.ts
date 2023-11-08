@@ -1,7 +1,6 @@
 import express, { Application, Request, Response } from 'express';
 import sequelize from './server/config/sequelize';
-
-
+import User from './server/services/users/userRouters';
 
 class App {
   private app: Application;
@@ -10,11 +9,15 @@ class App {
     this.app = express();
     this.routes();
   }
-
+// Rota para testar a conexão com o banco de dados
   private routes(): void {
     this.app.get('/', (req: Request, res: Response) => {
       res.send(process.env.DB_URI);
     });
+
+    //rota do user
+    this.app.use('/users', User)
+
   }
 
   public listen(): void {
