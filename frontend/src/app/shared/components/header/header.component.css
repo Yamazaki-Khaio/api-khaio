@@ -32,7 +32,7 @@ header nav .nav-link.active {
 header nav .form-control {
   background-color: dark;
   border-color: white;
-  color: white;
+  color: black;
 }
 header nav .form-control::-moz-placeholder {
   color: white;
