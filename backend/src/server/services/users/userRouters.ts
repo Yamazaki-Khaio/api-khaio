@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import UserController from './userController';
+import { loginRequired } from '../../middleware/authenticate';
 
 
 const routes = Router();
@@ -7,9 +8,9 @@ const routes = Router();
 
 routes.post('/login', UserController.login);
 routes.get('/', UserController.index);
-routes.get('/:id', UserController.show);
+routes.get('/:id', loginRequired , UserController.show);
 routes.post('/', UserController.store);
-routes.put('/:id', UserController.update);
-routes.delete('/:id', UserController.destroy);
+routes.put('/:id', loginRequired , UserController.update);
+routes.delete('/:id', loginRequired, UserController.destroy);
 
 export default routes;

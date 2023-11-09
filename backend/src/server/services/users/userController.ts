@@ -44,8 +44,12 @@ export const UserController = {
         return res.status(404).json({ error: 'Usuário não encontrado.' });
       }
 
-      //Lógica de atualização aqui
+      // Verificar se o usuário autenticado tem permissão para atualizar este usuário
+      if (req.params.id !== user.id.toString()) {
+        return res.status(403).json({ error: 'Você não tem permissão para atualizar este usuário.' });
+      }
 
+      await user.update(req.body);
       return res.json(user);
     } catch (err) {
       console.error(err);
@@ -59,16 +63,19 @@ export const UserController = {
       if (!user) {
         return res.status(404).json({ error: 'Usuário não encontrado.' });
       }
-      //lógica de exclusão aqui:
 
+      // Verificar se o usuário autenticado tem permissão para excluir este usuário
+      if (req.params.id !== user.id.toString()) {
+        return res.status(403).json({ error: 'Você não tem permissão para excluir este usuário.' });
+      }
 
+      await user.destroy();
       return res.json({ message: 'Usuário excluído com sucesso.' });
     } catch (err) {
       console.error(err);
       return res.status(500).json({ error: 'Erro ao excluir usuário.' });
     }
   },
-
 
   async login(req: Request, res: Response) {
     const { email, password } = req.body;

@@ -19,4 +19,22 @@ function verifyToken(token: string): User {
     }
 }
 
-export { generateToken, verifyToken };
+function loginRequired(req: any, res: any, next: any) {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+        return res.status(401).json({ message: 'Token não fornecido' });
+    }
+
+    try {
+        console.log(token);
+        const user = verifyToken(token);
+        console.log(user);
+        req.user = user;
+        next();
+    } catch (err) {
+        return res.status(401).json({ message: 'Token inválido' });
+    }
+}
+
+
+export { generateToken, verifyToken, loginRequired };
