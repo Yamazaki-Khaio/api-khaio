@@ -1,13 +1,14 @@
 import express, { Application, Request, Response } from 'express';
 import sequelize from './server/config/sequelize';
-import User from './server/services/users/userRouters';
-
+import userRouters from './server/services/users/userRouters';
+import { verifyToken } from './server/middleware/authenticate';
 class App {
   private app: Application;
 
   constructor() {
     this.app = express();
     this.routes();
+    this.middlewares();
   }
 // Rota para testar a conexão com o banco de dados
   private routes(): void {
@@ -17,8 +18,13 @@ class App {
 
     //rota do user
     this.app.use(express.json())
-    this.app.use('/users', User)
+    this.app.use('/users', userRouters)
 
+  }
+
+  private middlewares(): void {
+    this.app.use(express.json());
+    this.app.use(verifyToken);
   }
 
   public listen(): void {
