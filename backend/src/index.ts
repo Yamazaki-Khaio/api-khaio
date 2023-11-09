@@ -16,6 +16,7 @@ class App {
     });
 
     //rota do user
+    this.app.use(express.json())
     this.app.use('/users', User)
 
   }

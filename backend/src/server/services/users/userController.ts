@@ -28,14 +28,15 @@ export const UserController = {
 
   async store(req: Request, res: Response) {
     try {
+      console.log("Request Body:", req.body);
       const user = await User.create(req.body);
-      console.log(user);
+      console.log("User Created:", user);
       return res.json(user);
     } catch (err) {
-      console.error(err);
+      console.error("Error:", err);
       return res.status(500).json({ error: 'Erro ao criar usuário.' });
     }
-  },
+  },  
 
   async update(req: Request, res: Response) {
     try {

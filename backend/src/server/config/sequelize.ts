@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-console.log(process.env.DB_URI);
+// load .env file from root folder
 const sequelize = new Sequelize(process.env.DB_URI as string);
 
 export default sequelize;
