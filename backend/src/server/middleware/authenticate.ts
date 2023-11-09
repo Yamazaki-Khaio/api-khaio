@@ -28,7 +28,6 @@ function loginRequired(req: any, res: any, next: any) {
     try {
         console.log(token);
         const user = verifyToken(token);
-        console.log(user);
         req.user = user;
         next();
     } catch (err) {
